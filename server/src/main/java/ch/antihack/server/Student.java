@@ -1,11 +1,10 @@
 package ch.antihack.server;
 
+import com.mysql.cj.jdbc.Blob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Blob;
 
 @NoArgsConstructor
 @AllArgsConstructor
