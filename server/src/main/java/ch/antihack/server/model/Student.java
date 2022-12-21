@@ -1,4 +1,4 @@
-package ch.antihack.server;
+package ch.antihack.server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

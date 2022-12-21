@@ -1,5 +1,8 @@
-package ch.antihack.server;
+package ch.antihack.server.controller;
 
+import ch.antihack.server.ServerApplication;
+import ch.antihack.server.model.Student;
+import ch.antihack.server.model.StudentRepository;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,7 @@ public class StudentController {
 
     record StudentList(String[] students) { }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="/api/v1/all")
     public @ResponseBody Iterable<Student> getAllUsers() {
         // This returns a JSON or XML with the users
         return studentRepository.findAll();
