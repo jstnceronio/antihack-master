@@ -7,10 +7,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/v1/students")
 public class StudentController {
 
     private static final Logger logger = LogManager.getLogger(ServerApplication.class);
@@ -18,7 +20,7 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @GetMapping("/")
+    @GetMapping
     public StudentList greet() {
         logger.info("Greeting someone");
         return new StudentList(new String[] {"Inschallah", "Maschallah"});
@@ -26,7 +28,7 @@ public class StudentController {
 
     record StudentList(String[] students) { }
 
-    @GetMapping(path="/api/v1/all")
+    @GetMapping(path="/all")
     public @ResponseBody Iterable<Student> getAllUsers() {
         // This returns a JSON or XML with the users
         return studentRepository.findAll();
