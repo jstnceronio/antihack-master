@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ObUnknownRouteModule } from '@oblique/oblique';
-import { FormComponent } from './form/form.component';
-import { LoginComponent } from './login/login.component';
-import { ListComponent } from './list/list.component';
-import { RegisterComponent } from './register/register.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {ObUnknownRouteModule} from '@oblique/oblique';
+import {FormComponent} from './form/form.component';
+import {LoginComponent} from './login/login.component';
+import {ListComponent} from './list/list.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
 	{path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,10 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-		RouterModule.forRoot(routes), ObUnknownRouteModule
-  ]
+	declarations: [],
+	imports: [CommonModule, RouterModule.forRoot(routes), ObUnknownRouteModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { ObINavigationLink } from '@oblique/oblique';
+import {Component} from '@angular/core';
+import {ObINavigationLink} from '@oblique/oblique';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 	navigation: ObINavigationLink[] = [
@@ -24,7 +24,7 @@ export class AppComponent {
 			url: 'register',
 			label: 'Register'
 		}
-	]
+	];
 
-  title = 'antihack-client';
+	title = 'antihack-client';
 }
