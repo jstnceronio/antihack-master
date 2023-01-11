@@ -6,5 +6,5 @@ import {Component, OnInit} from '@angular/core';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	constructor() {}
+	// constructor() {}
 }

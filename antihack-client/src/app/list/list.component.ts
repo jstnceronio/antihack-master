@@ -6,5 +6,5 @@ import {Component, OnInit} from '@angular/core';
 	styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-	constructor() {}
+	// constructor() {}
 }
