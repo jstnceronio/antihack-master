@@ -1,6 +1,5 @@
 package ch.antihack.server.service;
 
-import ch.antihack.server.config.JwtService;
 import ch.antihack.server.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,13 +16,15 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        Role role = request.getRole() == 1 ? Role.USER_ONE : Role.USER_TWO;
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(role)
                 .build();
+        // TODO: Check if user already exists
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
