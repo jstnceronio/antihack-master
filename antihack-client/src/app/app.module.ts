@@ -9,7 +9,8 @@ import {
 	ObIconModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
-	multiTranslateLoader
+	multiTranslateLoader,
+	ObColumnLayoutModule
 } from '@oblique/oblique';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
@@ -26,6 +27,12 @@ import {RegisterComponent} from './register/register.component';
 import {ListComponent} from './list/list.component';
 import {FormComponent} from './form/form.component';
 import {AppRoutingModule} from './app-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localeDECH);
 
@@ -41,9 +48,15 @@ registerLocaleData(localeDECH);
 		HttpClientModule,
 		TranslateModule.forRoot(multiTranslateLoader()),
 		MatButtonModule,
+		MatFormFieldModule,
+		MatInputModule,
+		ObButtonModule,
+		ReactiveFormsModule,
+		ObColumnLayoutModule,
 		MatCardModule,
 		MatIconModule,
 		ObExternalLinkModule,
+		RouterModule,
 		AppRoutingModule
 	],
 	providers: [

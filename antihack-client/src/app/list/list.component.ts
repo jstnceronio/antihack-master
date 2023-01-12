@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 
 @Component({
@@ -5,6 +6,10 @@ import {Component, OnInit} from '@angular/core';
 	templateUrl: './list.component.html',
 	styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
-	// constructor() {}
+export class ListComponent implements OnInit{
+	constructor(private http: HttpClient) {}
+
+	ngOnInit() {
+		this.http.get<any>('localhost:8080/api/v1/students/all')
+	}
 }
