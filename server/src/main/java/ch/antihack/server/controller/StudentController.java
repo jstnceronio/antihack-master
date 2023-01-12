@@ -1,11 +1,14 @@
 package ch.antihack.server.controller;
 
 import ch.antihack.server.ServerApplication;
+import ch.antihack.server.model.Role;
 import ch.antihack.server.model.Student;
 import ch.antihack.server.model.StudentRepository;
+import ch.antihack.server.model.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +26,7 @@ public class StudentController {
     @GetMapping
     public StudentList greet() {
         logger.info("Greeting someone");
+
         return new StudentList(new String[] {"Inschallah", "Maschallah"});
     }
 
@@ -30,7 +34,13 @@ public class StudentController {
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Student> getAllUsers() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        logger.info(user.getFirstname() + " is accessing all entries with the role " + user.getRole()) ;
+
+        if (user.getRole().equals(Role.USER_ONE)) {
+            return studentRepository.getEntitiesByRange(1, 8);
+        }
         // This returns a JSON or XML with the users
-        return studentRepository.findAll();
+        return studentRepository.getEntitiesByRange(8, 16);
     }
 }
