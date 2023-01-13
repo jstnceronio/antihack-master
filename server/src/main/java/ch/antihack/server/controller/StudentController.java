@@ -28,7 +28,7 @@ public class StudentController {
     public StudentList greet() {
         logger.info("Greeting someone");
 
-        return new StudentList(new String[] {"Inschallah", "Maschallah"});
+        return new StudentList(new String[] {"Welcome, traveller"});
     }
 
     record StudentList(String[] students) { }
