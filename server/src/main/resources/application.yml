@@ -5,12 +5,20 @@ spring:
     password: ${env.MYSQL_PW}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
 jwt:
   secret: ${env.JWT_SECRET}
+server:
+    ssl:
+      key-alias: selfsigned
+      key-password: sml12345
+      key-store-password: sml12345
+      key-store: classpath:keystore.jks
+      key-store-provider: SUN
+      key-store-type: JKS
 client:
   url: http://localhost:4200
