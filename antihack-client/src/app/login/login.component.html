@@ -1,15 +1,15 @@
-<form>
+<form [formGroup]="loginGroup">
 	<h1>Login</h1>
 	<mat-form-field obErrorMessages>
 		<mat-label>email</mat-label>
-		<input matInput type="text" />
+		<input matInput type="text" formControlName="email" />
 		<mat-error></mat-error>
 	</mat-form-field>
 	<mat-form-field obErrorMessages>
 		<mat-label>PW</mat-label>
-		<input matInput type="text" />
+		<input matInput type="text" formControlName="password" />
 		<mat-error></mat-error>
 	</mat-form-field>
 	<a mat-button obButton="secondary">shesh</a>
-	<button mat-button obButton="primary" type="submit">Bestätigen</button>
+	<button mat-button obButton="primary" (click)="onSubmit()" [disabled]="loginGroup.invalid" routerLink="../list">Bestätigen</button>
 </form>

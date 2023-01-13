@@ -10,7 +10,8 @@ import {
 	ObIconModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
-	multiTranslateLoader
+	multiTranslateLoader,
+	ObSearchBoxModule
 } from '@oblique/oblique';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
@@ -33,6 +34,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {RouterModule} from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
 
 registerLocaleData(localeDECH);
 
@@ -48,7 +50,9 @@ registerLocaleData(localeDECH);
 		HttpClientModule,
 		TranslateModule.forRoot(multiTranslateLoader()),
 		MatButtonModule,
+		ObSearchBoxModule,
 		MatFormFieldModule,
+		MatTableModule,
 		MatInputModule,
 		ObButtonModule,
 		ReactiveFormsModule,

@@ -1,6 +1,7 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -15,20 +16,23 @@ export class RegisterComponent implements OnInit {
 		email: ['', Validators.required],
 		password: ['', Validators.required]
 	});
+	router!: Router;
 
 	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder) {}
+	ngOnInit(): void {}
 
 	onSubmit() {
 		this.http
-			.post<any>('http://localhost:8080/api/v1/auth/register', {
+			.post<any>('localhost:8080/api/v1/auth/register', {
 				firstname: `${this.registerGroup.get('firstName')?.value}`,
 				lastname: `${this.registerGroup.get('lastName')?.value}`,
 				email: `${this.registerGroup.get('email')?.value}`,
 				password: `${this.registerGroup.get('password')?.value}`,
 				role: 2
 			})
-			.subscribe(data => {
-				this.token = data.id;
+			.subscribe((response) => {
+				localStorage.setItem("JWT_TOKEN", JSON.stringify(response)
+				)
 			});
+		}
 	}
-}

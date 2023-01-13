@@ -9,7 +9,7 @@ import {ListComponent} from './list/list.component';
 import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
-	{path: '', redirectTo: 'login', pathMatch: 'full'},
+	{path: '', redirectTo: 'register', pathMatch: 'full'},
 	{path: 'home', component: HomeComponent},
 	{path: 'list', component: ListComponent},
 	{path: 'login', component: LoginComponent},
