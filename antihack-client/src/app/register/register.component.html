@@ -1,0 +1,25 @@
+<form [formGroup]="registerGroup">
+	<h1>Register</h1>
+	<mat-form-field obErrorMessages>
+		<mat-label>Vorname</mat-label>
+		<input matInput type="text" formControlName="firstName" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>Nachname</mat-label>
+		<input matInput type="text" formControlName="lastName" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>email</mat-label>
+		<input matInput type="text" formControlName="email" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>PW</mat-label>
+		<input matInput type="text" formControlName="password" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<a mat-button obButton="secondary">shesh</a>
+	<button mat-button obButton="primary" type="button" (click)="onSubmit()" [disabled]="registerGroup.invalid" routerLink="../list">Bestätigen</button>
+</form>
