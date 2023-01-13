@@ -20,6 +20,6 @@ export class ListComponent implements OnInit {
 				Authorization: `Bearer ${JWT_Token}`
 			})
 		};
-		this.http.get<any>('localhost:8080/api/v1/students/all', httpOptions).subscribe(respone => {});
+		// this.http.get<any>('localhost:8080/api/v1/students/all', httpOptions).subscribe(respone => {});
 	}
 }
