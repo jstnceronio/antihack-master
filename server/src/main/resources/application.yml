@@ -12,6 +12,7 @@ spring:
         format_sql: true
 jwt:
   secret: ${env.JWT_SECRET}
+  expiration: 15 # minutes
 server:
     ssl:
       key-alias: selfsigned
