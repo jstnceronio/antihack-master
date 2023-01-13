@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -30,9 +30,8 @@ export class RegisterComponent implements OnInit {
 				password: `${this.registerGroup.get('password')?.value}`,
 				role: 2
 			})
-			.subscribe((response) => {
-				localStorage.setItem('JWT_TOKEN', JSON.stringify(response)
-				)
+			.subscribe(response => {
+				localStorage.setItem('JWT_TOKEN', JSON.stringify(response));
 			});
-		}
 	}
+}
