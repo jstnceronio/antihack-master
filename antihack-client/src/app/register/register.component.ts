@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 				role: 2
 			})
 			.subscribe((response) => {
-				localStorage.setItem("JWT_TOKEN", JSON.stringify(response)
+				localStorage.setItem('JWT_TOKEN', JSON.stringify(response)
 				)
 			});
 		}
