@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("${client.url}")
 @RequestMapping("/api/v1/students")
 public class StudentController {
 
@@ -40,7 +40,7 @@ public class StudentController {
         logger.info(user.getFirstname() + " is accessing all entries with the role " + user.getRole()) ;
 
         if (user.getRole().equals(Role.USER_ONE)) {
-            return studentRepository.getEntitiesByRange(1, 8);
+            return studentRepository.getEntitiesByRange(1, 7);
         }
         // This returns a JSON or XML with the users
         return studentRepository.getEntitiesByRange(8, 16);

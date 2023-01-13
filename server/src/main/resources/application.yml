@@ -12,3 +12,5 @@ spring:
         format_sql: true
 jwt:
   secret: ${env.JWT_SECRET}
+client:
+  url: http://localhost:4200
