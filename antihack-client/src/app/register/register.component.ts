@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 	token!: string;
 	registerGroup: FormGroup = this.formBuilder.group({
 		firstName: ['', Validators.required],
@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
 	router!: Router;
 
 	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder) {}
-	ngOnInit(): void {}
 
 	onSubmit() {
 		this.http
