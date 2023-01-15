@@ -10,16 +10,18 @@ export class ListComponent implements OnInit {
 	constructor(private readonly http: HttpClient) {}
 
 	ngOnInit() {
-		const JWT_Token = localStorage.getItem('JWT_TOKEN');
+		const jwtToken = localStorage.getItem('JWT_TOKEN');
+		console.log('Using token: ' + jwtToken);
 		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-				'Access-Control-Allow-Headers': 'Content-Type',
-				Authorization: `Bearer ${JWT_Token}`
+			headers: new HttpHeaders({ 'Content-Type': 'application/json',
+				Authorization: "Bearer " + jwtToken
 			})
 		};
-		// this.http.get<any>('localhost:8080/api/v1/students/all', httpOptions).subscribe(respone => {});
+		let headers = new Headers();
+		if (jwtToken != null) {
+			headers.append('Authorization', jwtToken);
+		}
+		headers.append('Content-Type', 'application/json');
+		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe(response => {console.log(response)});
 	}
 }

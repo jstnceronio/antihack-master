@@ -19,7 +19,7 @@ export class LoginComponent {
 
 	onSubmit() {
 		this.http
-			.post<any>('localhost:8080/api/v1/auth/authenticate', {
+			.post<any>('http://localhost:8080/api/v1/auth/authenticate', {
 				email: `${this.loginGroup.get('email')?.value}`,
 				password: `${this.loginGroup.get('password')?.value}`
 			})
