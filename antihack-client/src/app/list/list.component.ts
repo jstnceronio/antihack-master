@@ -12,13 +12,13 @@ export class ListComponent implements OnInit {
 	ngOnInit() {
 		const jwtToken = localStorage.getItem('JWT_TOKEN');
 		const httpOptions = {
-			headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}` })
+			headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}`})
 		};
 		const headers = new Headers();
 		if (jwtToken != null) {
 			headers.append('Authorization', jwtToken);
 		}
 		headers.append('Content-Type', 'application/json');
-		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe();
+		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe(response => console.log(response));
 	}
 }

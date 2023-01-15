@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("${client.url}")
 public class AuthenticationController {
 
     private static final Logger logger = LogManager.getLogger(ServerApplication.class);
