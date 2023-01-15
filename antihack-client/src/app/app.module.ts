@@ -18,7 +18,6 @@ import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TranslateModule} from '@ngx-translate/core';
-import {HomeComponent} from './home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
@@ -39,7 +38,7 @@ import {MatTableModule} from '@angular/material/table';
 registerLocaleData(localeDECH);
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, ListComponent, FormComponent],
+	declarations: [AppComponent, LoginComponent, RegisterComponent, ListComponent, FormComponent],
 	imports: [
 		BrowserModule,
 		RouterTestingModule,

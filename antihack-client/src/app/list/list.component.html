@@ -1,12 +1,23 @@
-<p>list works!</p>
 <ob-search-box></ob-search-box>
-<table>
-	<tr *ngFor="let student of studentsArray">
-		<td><img src="{{ student.profilePicture }}" /></td>
-		<td>{{ student.firstName }}</td>
-		<td>{{ student.name }}</td>
-		<td>{{ student.email }}</td>
-		<td>{{ student.address }}</td>
-		<td>{{ student.zipCode }}</td>
-	</tr>
+<table class="ob-table">
+	<thead>
+		<tr>
+			<th>Bild</th>
+			<th>Vorname</th>
+			<th>Nachname</th>
+			<th>E-Mail</th>
+			<th>Adresse</th>
+			<th>PLZ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let student of studentsArray">
+			<td><img src="{{ student.profilePicture }}" /></td>
+			<td>{{ student.firstName }}</td>
+			<td>{{ student.name }}</td>
+			<td>{{ student.email }}</td>
+			<td>{{ student.address }}</td>
+			<td>{{ student.zipCode }}</td>
+		</tr>
+	</tbody>
 </table>
