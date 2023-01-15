@@ -1,9 +1,0 @@
-version: '3'
-services:
-  keycloak:
-    image: quay.io/keycloak/keycloak:20.0.2
-    ports:
-      - "8180:8180"
-    environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
