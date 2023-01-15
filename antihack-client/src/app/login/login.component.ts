@@ -24,7 +24,7 @@ export class LoginComponent {
 				password: `${this.loginGroup.get('password')?.value}`
 			})
 			.subscribe(response => {
-				localStorage.setItem('JWT_TOKEN', JSON.stringify(response));
+				localStorage.setItem('JWT_TOKEN', response.token);
 			});
 	}
 }
