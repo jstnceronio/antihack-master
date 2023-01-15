@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 	styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+	students = [];
+	studentsArray: any = [];
 	constructor(private readonly http: HttpClient) {}
 
 	ngOnInit() {
@@ -19,6 +21,8 @@ export class ListComponent implements OnInit {
 			headers.append('Authorization', jwtToken);
 		}
 		headers.append('Content-Type', 'application/json');
-		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe(response => console.log(response));
+		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe(response => {
+			this.studentsArray = response;
+		});
 	}
 }
