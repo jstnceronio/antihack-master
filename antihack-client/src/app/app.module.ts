@@ -30,8 +30,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
-import {Observable, throwError} from 'rxjs';
-import {catchError, retry} from 'rxjs/operators';
 import {RouterModule} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 
