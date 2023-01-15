@@ -13,6 +13,7 @@ spring:
 jwt:
   secret: ${env.JWT_SECRET}
   expiration: 15 # minutes
+  refresh expiration: 3600
 server:
     ssl:
       key-alias: selfsigned
