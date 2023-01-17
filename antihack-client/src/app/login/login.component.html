@@ -1,4 +1,4 @@
-<form [formGroup]="loginGroup">
+<form [formGroup]="loginGroup" id="inputgroup">
 	<h1>Login</h1>
 	<mat-form-field obErrorMessages>
 		<mat-label>Email</mat-label>
@@ -7,11 +7,11 @@
 	</mat-form-field>
 	<mat-form-field obErrorMessages>
 		<mat-label>Passwort</mat-label>
-		<input matInput type="text" formControlName="password" />
+		<input matInput type="password" formControlName="password" />
 		<mat-error></mat-error>
 	</mat-form-field>
-	<a mat-button obButton="secondary" routerLink="../register">Noch keinen account?</a>
-	<button mat-button obButton="primary" (click)="onSubmit()" [disabled]="loginGroup.invalid">Bestätigen</button>
+	<a mat-button obButton="secondary" routerLink="../register"><mat-icon svgIcon="arrow-right"></mat-icon> Noch keinen account?</a>
+	<button mat-button obButton="primary" (click)="onSubmit()" [disabled]="loginGroup.invalid"><mat-icon svgIcon="login"></mat-icon>Login</button>
 	<p *ngIf="error" style="font-weight: bold; color: red; margin-top: 10px">
 		{{ error }}
 	</p>

@@ -1,9 +1,6 @@
-<a (click)='logout()' id="logout-link">
-	You are currently logged in, log out by clicking me
-</a> <br>
+<a (click)="logout()" id="logout-link"> You are currently logged in, log out by clicking me </a> <br />
 
-<input type="text" id="search-bar" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Suche Studenten nach Vor- oder Nachname">
-
+<input type="text" id="search-bar" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Suche Studenten nach Vor- oder Nachname" />
 
 <table class="ob-table">
 	<thead>
@@ -17,7 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let student of studentsArray | filter:searchText">
+		<tr *ngFor="let student of studentsArray | filter : searchText">
 			<td><img src="{{ student.profilePicture }}" /></td>
 			<td>{{ student.firstName }}</td>
 			<td>{{ student.name }}</td>

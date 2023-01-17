@@ -1,37 +1,40 @@
 <form [formGroup]="registerGroup">
-	<h1>Register</h1>
-	<mat-form-field obErrorMessages>
-		<mat-label>Vorname</mat-label>
-		<input matInput type="text" formControlName="firstName" />
-		<mat-error></mat-error>
-	</mat-form-field>
-	<mat-form-field obErrorMessages>
-		<mat-label>Nachname</mat-label>
-		<input matInput type="text" formControlName="lastName" />
-		<mat-error></mat-error>
-	</mat-form-field>
-	<mat-form-field obErrorMessages>
-		<mat-label>Email</mat-label>
-		<input matInput type="text" formControlName="email" />
-		<mat-error></mat-error>
-	</mat-form-field>
-	<mat-form-field obErrorMessages>
-		<mat-label>Passwort</mat-label>
-		<input matInput type="password" formControlName="password" />
-		<mat-error></mat-error>
-	</mat-form-field>
-	<mat-form-field obErrorMessages>
-		<mat-label>Gruppe</mat-label>
-		<mat-select formControlName="role">
-			<mat-option [value]="1">Eins</mat-option>
-			<mat-option [value]="2">Zwei</mat-option>
-		</mat-select>
-		<mat-error></mat-error>
-
-	</mat-form-field>
-	<a mat-button obButton="secondary" routerLink="../login">Du hast bereits einen Account?</a>
-	<button mat-button obButton="primary" type="button" (click)="onSubmit()" [disabled]="registerGroup.invalid">Bestätigen</button>
-	<p *ngIf="error" style="font-weight: bold; color: red; margin-top: 10px">
-		{{ error }}
-	</p>
+	<fieldset id="inputgroup">
+		<h1>Register</h1>
+		<mat-form-field obErrorMessages>
+			<mat-label>Vorname</mat-label>
+			<input matInput type="text" formControlName="firstName" />
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Nachname</mat-label>
+			<input matInput type="text" formControlName="lastName" />
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Email</mat-label>
+			<input matInput type="text" formControlName="email" />
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Passwort</mat-label>
+			<input matInput type="password" formControlName="password" />
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Gruppe</mat-label>
+			<mat-select formControlName="role">
+				<mat-option [value]="1">Eins</mat-option>
+				<mat-option [value]="2">Zwei</mat-option>
+			</mat-select>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<a mat-button obButton="secondary" routerLink="../login"><mat-icon svgIcon="arrow-right"></mat-icon>Du hast bereits einen Account?</a>
+		<button mat-button obButton="primary" type="button" (click)="onSubmit()" [disabled]="registerGroup.invalid">
+			<mat-icon svgIcon="login"></mat-icon>Bestätigen
+		</button>
+		<p *ngIf="error" style="font-weight: bold; color: red; margin-top: 10px">
+			{{ error }}
+		</p>
+	</fieldset>
 </form>

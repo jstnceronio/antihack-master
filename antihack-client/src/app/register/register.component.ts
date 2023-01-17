@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpService} from "../services/http.service";
 
@@ -12,11 +12,13 @@ import {HttpService} from "../services/http.service";
 export class RegisterComponent {
 	token = '';
 	error = '';
+	passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 	registerGroup: FormGroup = this.formBuilder.group({
 		firstName: ['', Validators.required],
 		lastName: ['', Validators.required],
-		email: ['', Validators.required],
-		password: ['', Validators.required],
+		email: ['', Validators.required, Validators.email],
+		password: ['', Validators.required, Validators.pattern(this.passwordRegex)],
 		role: ['', Validators.required]
 	});
 
