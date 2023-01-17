@@ -6,10 +6,15 @@ import {FormComponent} from './form/form.component';
 import {LoginComponent} from './login/login.component';
 import {ListComponent} from './list/list.component';
 import {RegisterComponent} from './register/register.component';
+import {AuthGuardService} from "./services/auth-guard.service";
 
 const routes: Routes = [
 	{path: '', redirectTo: 'register', pathMatch: 'full'},
-	{path: 'list', component: ListComponent},
+	{
+		path: 'list',
+		component: ListComponent,
+		canActivate: [AuthGuardService]
+	},
 	{path: 'login', component: LoginComponent},
 	{path: 'form', component: FormComponent},
 	{path: 'register', component: RegisterComponent},
