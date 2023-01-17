@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	token: string = '';
-	error: string = '';
+	token = '';
+	error = '';
 	registerGroup: FormGroup = this.formBuilder.group({
 		firstName: ['', Validators.required],
 		lastName: ['', Validators.required],
@@ -32,10 +32,9 @@ export class RegisterComponent {
 			.subscribe(response => {
 				if (response) {
 					localStorage.setItem('JWT_TOKEN', response.token);
-					this.router.navigate(['/list']);
+					this.router.navigate(['/list']).then();
 				} else {
-					this.error = 'It seems like there already exists a user with the email '
-						+ this.registerGroup.get('email')?.value;
+					this.error = `It seems like there already exists a user with the email ${this.registerGroup.get('email')?.value}`;
 				}
 			});
 	}

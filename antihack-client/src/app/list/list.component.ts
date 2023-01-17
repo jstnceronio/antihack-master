@@ -12,7 +12,6 @@ export class ListComponent implements OnInit {
 
 	ngOnInit() {
 		const jwtToken = localStorage.getItem('JWT_TOKEN');
-		console.log(jwtToken)
 		const httpOptions = {
 			headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}`})
 		};

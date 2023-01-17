@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {of} from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -9,8 +10,8 @@ import {Router} from '@angular/router';
 	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-	token: string = '';
-	error: string = 'hello';
+	token = '';
+	error = '';
 
 	loginGroup: FormGroup = this.formBuilder.group({
 		email: ['', Validators.required],
@@ -27,9 +28,8 @@ export class LoginComponent {
 			})
 			.subscribe(response => {
 				if (response) {
-					console.log('we got a response')
 					localStorage.setItem('JWT_TOKEN', response.token);
-					this.router.navigate(['/list']);
+					this.router.navigate(['/list']).then();
 				} else {
 					this.error = 'Invalid login, please try again';
 				}

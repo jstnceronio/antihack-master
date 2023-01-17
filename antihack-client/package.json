@@ -61,8 +61,6 @@
     "sonar56x": true
   },
   "husky": {
-    "hooks": {
-      "pre-push": "npm run format"
-    }
+    "hooks": {}
   }
 }
