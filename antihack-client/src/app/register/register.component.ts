@@ -1,5 +1,5 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -22,7 +22,7 @@ export class RegisterComponent {
 
 	onSubmit() {
 		this.http
-			.post<any>('localhost:8080/api/v1/auth/register', {
+			.post<any>('http://localhost:8080/api/v1/auth/register', {
 				firstname: `${this.registerGroup.get('firstName')?.value}`,
 				lastname: `${this.registerGroup.get('lastName')?.value}`,
 				email: `${this.registerGroup.get('email')?.value}`,
@@ -30,7 +30,7 @@ export class RegisterComponent {
 				role: 2
 			})
 			.subscribe(response => {
-				localStorage.setItem('JWT_TOKEN', JSON.stringify(response));
+				localStorage.setItem('JWT_TOKEN', response.token);
 			});
 	}
 }

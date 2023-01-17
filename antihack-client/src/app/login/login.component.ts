@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
 @Component({
@@ -19,12 +19,12 @@ export class LoginComponent {
 
 	onSubmit() {
 		this.http
-			.post<any>('localhost:8080/api/v1/auth/authenticate', {
+			.post<any>('http://localhost:8080/api/v1/auth/authenticate', {
 				email: `${this.loginGroup.get('email')?.value}`,
 				password: `${this.loginGroup.get('password')?.value}`
 			})
 			.subscribe(response => {
-				localStorage.setItem('JWT_TOKEN', JSON.stringify(response));
+				localStorage.setItem('JWT_TOKEN', response.token);
 			});
 	}
 }

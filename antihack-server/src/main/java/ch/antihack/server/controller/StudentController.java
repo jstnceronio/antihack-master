@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin("${client.url}")
 @RequestMapping("/api/v1/students")
+@CrossOrigin("${client.url}")
 public class StudentController {
 
     private static final Logger logger = LogManager.getLogger(ServerApplication.class);
@@ -34,6 +34,7 @@ public class StudentController {
 
     record StudentList(String[] students) { }
 
+    // @CrossOrigin
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Student> getAllUsers() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

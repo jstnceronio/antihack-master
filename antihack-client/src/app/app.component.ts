@@ -13,16 +13,8 @@ export class AppComponent {
 			label: 'Home'
 		},
 		{
-			url: 'login',
-			label: 'Login'
-		},
-		{
 			url: 'list',
 			label: 'List'
-		},
-		{
-			url: 'register',
-			label: 'Register'
 		}
 	];
 

@@ -7,19 +7,22 @@ import {Component, OnInit} from '@angular/core';
 	styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+	students = [];
+	studentsArray: any = [];
 	constructor(private readonly http: HttpClient) {}
 
 	ngOnInit() {
-		const JWT_Token = localStorage.getItem('JWT_TOKEN');
+		const jwtToken = localStorage.getItem('JWT_TOKEN');
 		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-				'Access-Control-Allow-Headers': 'Content-Type',
-				Authorization: `Bearer ${JWT_Token}`
-			})
+			headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}`})
 		};
-		// this.http.get<any>('localhost:8080/api/v1/students/all', httpOptions).subscribe(respone => {});
+		const headers = new Headers();
+		if (jwtToken != null) {
+			headers.append('Authorization', jwtToken);
+		}
+		headers.append('Content-Type', 'application/json');
+		this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions).subscribe(response => {
+			this.studentsArray = response;
+		});
 	}
 }

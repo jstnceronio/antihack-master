@@ -13,14 +13,5 @@ spring:
 jwt:
   secret: ${env.JWT_SECRET}
   expiration: 15 # minutes
-  refresh expiration: 3600
-server:
-    ssl:
-      key-alias: selfsigned
-      key-password: ${env.SSL_SECRET}
-      key-store-password: ${env.SSL_SECRET}
-      key-store: classpath:keystore.jks
-      key-store-provider: SUN
-      key-store-type: JKS
 client:
   url: http://localhost:4200
