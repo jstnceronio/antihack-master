@@ -16,4 +16,8 @@ export class ListComponent implements OnInit {
 			this.studentsArray = response;
 		});
 	}
+
+	logout() {
+		this.httpService.logout();
+	}
 }
