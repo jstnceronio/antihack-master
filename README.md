@@ -10,12 +10,17 @@ Client runs on localhost:4200
 Prerequisites:
 - Have MySQL (Workbench) instance installed
 - Create students_db schema
-- Create .env file in resources folder with the following properties
+- Insert student entries (script located in resources)
+- Create .env file in resources folder with the properties described in .env.example
+- Maven Clean, Install
 
-MYSQL_USER=foo
-MYSQL_PW=bar
-JWT_SECRET=12345
-SSL_SECRET=12345
+Start server in the main class.
 
+## Starting the server
 
+Prerequisites:
+- Node Version
+- NPM Install
+
+Start the client using npm start.
 

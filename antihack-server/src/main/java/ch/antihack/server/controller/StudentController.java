@@ -28,7 +28,6 @@ public class StudentController {
     @GetMapping
     public StudentList greet() {
         logger.info("Greeting someone");
-
         return new StudentList(new String[] {"Welcome, traveller"});
     }
 

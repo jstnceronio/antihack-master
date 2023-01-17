@@ -32,6 +32,7 @@ public class AuthenticationController {
     }
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+        logger.info("User is trying to login with email " + request.getEmail());
         return ResponseEntity.ok(service.authenticate(request));
     }
 }
