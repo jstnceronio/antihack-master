@@ -33,6 +33,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {MatSelectModule} from "@angular/material/select";
 
 registerLocaleData(localeDECH);
 
@@ -61,7 +62,8 @@ registerLocaleData(localeDECH);
 		RouterModule,
 		AppRoutingModule,
 		Ng2SearchPipeModule,
-		FormsModule
+		FormsModule,
+		MatSelectModule
 	],
 	providers: [
 		{provide: LOCALE_ID, useValue: 'de-CH'},

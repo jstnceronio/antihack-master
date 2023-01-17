@@ -27,7 +27,7 @@ export class HttpService {
 			  lastname: `${registerGroup.get('lastName')?.value}`,
 			  email: `${registerGroup.get('email')?.value}`,
 			  password: `${registerGroup.get('password')?.value}`,
-			  role: 2
+			  role: `${registerGroup.get('role')?.value}`
 		  });
   }
 

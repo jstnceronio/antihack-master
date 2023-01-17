@@ -16,7 +16,8 @@ export class RegisterComponent {
 		firstName: ['', Validators.required],
 		lastName: ['', Validators.required],
 		email: ['', Validators.required],
-		password: ['', Validators.required]
+		password: ['', Validators.required],
+		role: ['', Validators.required]
 	});
 
 	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly httpService: HttpService) {}
