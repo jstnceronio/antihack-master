@@ -9,6 +9,7 @@ import {HttpService} from "../services/http.service";
 })
 export class ListComponent implements OnInit {
 	studentsArray: any = [];
+	searchText: any;
 	constructor(private readonly http: HttpClient, private readonly httpService: HttpService) {}
 
 	ngOnInit() {

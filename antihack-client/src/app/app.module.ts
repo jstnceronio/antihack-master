@@ -29,9 +29,10 @@ import {FormComponent} from './form/form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 registerLocaleData(localeDECH);
 
@@ -58,7 +59,9 @@ registerLocaleData(localeDECH);
 		MatIconModule,
 		ObExternalLinkModule,
 		RouterModule,
-		AppRoutingModule
+		AppRoutingModule,
+		Ng2SearchPipeModule,
+		FormsModule
 	],
 	providers: [
 		{provide: LOCALE_ID, useValue: 'de-CH'},

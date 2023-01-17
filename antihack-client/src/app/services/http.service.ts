@@ -39,7 +39,7 @@ export class HttpService {
   }
 
   logout() {
-	  localStorage.removeItem('JWT_TOKEN');
+	  localStorage.removeItem('JWT_ACCESS_TOKEN');
 	  localStorage.removeItem('JWT_REFRESH_TOKEN');
 	  this.router.navigate(['/login']);
   }
