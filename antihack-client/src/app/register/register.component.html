@@ -20,6 +20,9 @@
 		<input matInput type="text" formControlName="password" />
 		<mat-error></mat-error>
 	</mat-form-field>
-	<a mat-button obButton="secondary" routerLink="../login">Bereits einen Account?</a>
-	<button mat-button obButton="primary" type="button" (click)="onSubmit()" [disabled]="registerGroup.invalid" routerLink="../list">Bestätigen</button>
+	<a mat-button obButton="secondary" routerLink="../login">Du hast bereits einen Account?</a>
+	<button mat-button obButton="primary" type="button" (click)="onSubmit()" [disabled]="registerGroup.invalid">Bestätigen</button>
+	<p *ngIf="error" style="font-weight: bold; color: red; margin-top: 10px">
+		{{ error }}
+	</p>
 </form>

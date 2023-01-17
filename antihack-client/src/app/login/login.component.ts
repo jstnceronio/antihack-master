@@ -9,7 +9,9 @@ import {Router} from '@angular/router';
 	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-	token!: string;
+	token: string = '';
+	error: string = 'hello';
+
 	loginGroup: FormGroup = this.formBuilder.group({
 		email: ['', Validators.required],
 		password: ['', Validators.required]
@@ -24,7 +26,13 @@ export class LoginComponent {
 				password: `${this.loginGroup.get('password')?.value}`
 			})
 			.subscribe(response => {
-				localStorage.setItem('JWT_TOKEN', response.token);
+				if (response) {
+					console.log('we got a response')
+					localStorage.setItem('JWT_TOKEN', response.token);
+					this.router.navigate(['/list']);
+				} else {
+					this.error = 'Invalid login, please try again';
+				}
 			});
 	}
 }

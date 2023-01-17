@@ -9,16 +9,16 @@ import {Router} from '@angular/router';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	token!: string;
+	token: string = '';
+	error: string = '';
 	registerGroup: FormGroup = this.formBuilder.group({
 		firstName: ['', Validators.required],
 		lastName: ['', Validators.required],
 		email: ['', Validators.required],
 		password: ['', Validators.required]
 	});
-	router!: Router;
 
-	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder) {}
+	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router) {}
 
 	onSubmit() {
 		this.http
@@ -30,7 +30,13 @@ export class RegisterComponent {
 				role: 2
 			})
 			.subscribe(response => {
-				localStorage.setItem('JWT_TOKEN', response.token);
+				if (response) {
+					localStorage.setItem('JWT_TOKEN', response.token);
+					this.router.navigate(['/list']);
+				} else {
+					this.error = 'It seems like there already exists a user with the email '
+						+ this.registerGroup.get('email')?.value;
+				}
 			});
 	}
 }

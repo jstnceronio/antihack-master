@@ -3,21 +3,19 @@ Module 183 - "Unhackable" server to list students
 
 Server runs on localhost:8080
 
-Create Schema: students_db
-Create Table:
+Client runs on localhost:4200
 
-CREATE TABLE `student` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `profile_picture` blob,
-  `first_name` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  `zip_code` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+## Starting the server
 
-Enter DB credentials in .env file (create in root of server)
+Prerequisites:
+- Have MySQL (Workbench) instance installed
+- Create students_db schema
+- Create .env file in resources folder with the following properties
 
-Run docker:
-docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:20.0.2 start-dev
+MYSQL_USER=foo
+MYSQL_PW=bar
+JWT_SECRET=12345
+SSL_SECRET=12345
+
+
+

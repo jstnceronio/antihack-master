@@ -2,6 +2,7 @@ package ch.antihack.server.config;
 
 import ch.antihack.server.ServerApplication;
 import ch.antihack.server.service.JwtService;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -49,7 +50,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         try {
             userEmail = jwtService.extractUsername(jwt);
-        } catch (MalformedJwtException e) {
+        } catch (MalformedJwtException | ExpiredJwtException e) {
             logger.error("Got an invalid JWT");
             return;
         }
