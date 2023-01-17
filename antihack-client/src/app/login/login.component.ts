@@ -24,7 +24,9 @@ export class LoginComponent {
 	onSubmit() {
 		this.httpService.login(this.loginGroup).subscribe(response => {
 				if (response) {
-					localStorage.setItem('JWT_TOKEN', response.token);
+					localStorage.setItem('JWT_ACCESS_TOKEN', response.token);
+					localStorage.setItem('JWT_REFRESH_TOKEN', response.refreshToken);
+
 					this.router.navigate(['/list']).then();
 				} else {
 					this.error = 'Invalid login, please try again';

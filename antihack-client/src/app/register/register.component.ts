@@ -24,7 +24,8 @@ export class RegisterComponent {
 	onSubmit() {
 		this.httpService.register(this.registerGroup).subscribe(response => {
 			if (response) {
-				localStorage.setItem('JWT_TOKEN', response.token);
+				localStorage.setItem('JWT_ACCESS_TOKEN', response.token);
+				localStorage.setItem('JWT_REFRESH_TOKEN', response.refreshToken);
 				this.router.navigate(['/list']).then();
 			} else {
 				this.error = `It seems like there already exists a user with the email ${this.registerGroup.get('email')?.value}`;

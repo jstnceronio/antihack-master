@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as http from "http";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -14,7 +14,11 @@ export class HttpService {
   }
 
   getStudents() {
-
+    const jwtToken = localStorage.getItem('JWT_ACCESS_TOKEN');
+	const httpOptions = {
+		headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: `Bearer ${jwtToken}`})
+	};
+	return this.http.get<any>('http://localhost:8080/api/v1/students/all', httpOptions);
   }
 
   register(registerGroup: FormGroup) {
@@ -36,6 +40,7 @@ export class HttpService {
 
   logout() {
 	  localStorage.removeItem('JWT_TOKEN');
+	  localStorage.removeItem('JWT_REFRESH_TOKEN');
 	  this.router.navigate(['/login']);
   }
 }
