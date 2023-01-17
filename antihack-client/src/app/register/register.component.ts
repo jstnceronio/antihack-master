@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {HttpService} from "../services/http.service";
 
 @Component({
 	selector: 'app-register',
@@ -18,24 +19,16 @@ export class RegisterComponent {
 		password: ['', Validators.required]
 	});
 
-	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router) {}
+	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly httpService: HttpService) {}
 
 	onSubmit() {
-		this.http
-			.post<any>('http://localhost:8080/api/v1/auth/register', {
-				firstname: `${this.registerGroup.get('firstName')?.value}`,
-				lastname: `${this.registerGroup.get('lastName')?.value}`,
-				email: `${this.registerGroup.get('email')?.value}`,
-				password: `${this.registerGroup.get('password')?.value}`,
-				role: 2
-			})
-			.subscribe(response => {
-				if (response) {
-					localStorage.setItem('JWT_TOKEN', response.token);
-					this.router.navigate(['/list']).then();
-				} else {
-					this.error = `It seems like there already exists a user with the email ${this.registerGroup.get('email')?.value}`;
-				}
-			});
+		this.httpService.register(this.registerGroup).subscribe(response => {
+			if (response) {
+				localStorage.setItem('JWT_TOKEN', response.token);
+				this.router.navigate(['/list']).then();
+			} else {
+				this.error = `It seems like there already exists a user with the email ${this.registerGroup.get('email')?.value}`;
+			}
+		});
 	}
 }

@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {of} from 'rxjs';
+import {HttpService} from "../services/http.service";
 
 @Component({
 	selector: 'app-login',
@@ -18,15 +19,10 @@ export class LoginComponent {
 		password: ['', Validators.required]
 	});
 
-	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router) {}
+	constructor(private readonly http: HttpClient, private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly httpService: HttpService) {}
 
 	onSubmit() {
-		this.http
-			.post<any>('http://localhost:8080/api/v1/auth/authenticate', {
-				email: `${this.loginGroup.get('email')?.value}`,
-				password: `${this.loginGroup.get('password')?.value}`
-			})
-			.subscribe(response => {
+		this.httpService.login(this.loginGroup).subscribe(response => {
 				if (response) {
 					localStorage.setItem('JWT_TOKEN', response.token);
 					this.router.navigate(['/list']).then();
