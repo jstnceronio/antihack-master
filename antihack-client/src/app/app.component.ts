@@ -9,8 +9,8 @@ import {ObINavigationLink} from '@oblique/oblique';
 export class AppComponent {
 	navigation: ObINavigationLink[] = [
 		{
-			url: 'Student Overview',
-			label: 'List'
+			url: 'list',
+			label: 'Student Overview'
 		}
 	];
 
