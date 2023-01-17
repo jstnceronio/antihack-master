@@ -39,9 +39,12 @@ public class AuthenticationService {
 
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var jwtRefreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .refreshToken(jwtRefreshToken)
                 .build();
+
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -54,9 +57,11 @@ public class AuthenticationService {
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        var jwtRefreshToken = jwtService.generateRefreshToken(user);
         logger.info("User " + request.getEmail() + " has logged in successfully");
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .refreshToken(jwtRefreshToken)
                 .build();
     }
 }

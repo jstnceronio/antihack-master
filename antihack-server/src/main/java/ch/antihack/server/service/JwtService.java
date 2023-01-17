@@ -25,6 +25,9 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private int JWT_EXPIRATION;
 
+    @Value("${jwt.refresh expiration}")
+    private int JWT_REFRESHEXPERATION;
+
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -52,16 +55,48 @@ public class JwtService {
                 .compact();
     }
 
+    public String generateRefreshToken(UserDetails userRefreshDetails) {
+        return createRefeshToken(new HashMap<>(), userRefreshDetails);
+    }
+
+    public String createRefeshToken(
+            Map<String, Object> extraRefreshClaims,
+            UserDetails userRefreshDetails
+    ) {
+        return Jwts
+                .builder()
+                .setClaims(extraRefreshClaims)
+                .setSubject(userRefreshDetails.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_REFRESHEXPERATION * 60 * 1000))
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+    public boolean isRefeshTokenValid(String token, UserDetails userRefreshDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userRefreshDetails.getUsername())) && !isRefeshTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
+    private boolean isRefeshTokenExpired(String token) {
+        return extractRefeshExpiration(token).before(new Date());
+    }
+
     private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    private Date extractRefeshExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
@@ -73,6 +108,8 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+
 
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
