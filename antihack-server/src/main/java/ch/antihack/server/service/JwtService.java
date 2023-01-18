@@ -25,7 +25,7 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private int JWT_EXPIRATION;
 
-    @Value("${jwt.refresh expiration}")
+    @Value("${jwt.refresh-expiration}")
     private int JWT_REFRESHEXPERATION;
 
     public String extractUsername(String token) {
