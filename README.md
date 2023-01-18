@@ -16,7 +16,7 @@ Prerequisites:
 
 Start server in the main class.
 
-## Starting the server
+## Starting the client
 
 Prerequisites:
 - Node Version
