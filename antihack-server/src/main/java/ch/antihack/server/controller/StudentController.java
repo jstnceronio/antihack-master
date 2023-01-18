@@ -39,6 +39,10 @@ public class StudentController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         logger.info(user.getFirstname() + " is accessing all entries with the role " + user.getRole()) ;
 
+        if (user.getRole().equals(Role.ADMIN)) {
+            return studentRepository.findAll();
+        }
+
         if (user.getRole().equals(Role.USER_ONE)) {
             return studentRepository.getEntitiesByRange(1, 7);
         }
