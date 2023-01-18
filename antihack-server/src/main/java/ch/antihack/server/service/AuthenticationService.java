@@ -22,7 +22,17 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        Role role = request.getRole() == 1 ? Role.USER_ONE : Role.USER_TWO;
+        Role role;
+        switch (request.getRole()) {
+            case 2:
+                role = Role.USER_TWO;
+                break;
+            case 3:
+                role = Role.ADMIN;
+                break;
+            default:
+                role = Role.USER_ONE;
+        }
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
