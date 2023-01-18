@@ -25,7 +25,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {ListComponent} from './list/list.component';
-import {FormComponent} from './form/form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -38,7 +37,7 @@ import {MatSelectModule} from "@angular/material/select";
 registerLocaleData(localeDECH);
 
 @NgModule({
-	declarations: [AppComponent, LoginComponent, RegisterComponent, ListComponent, FormComponent],
+	declarations: [AppComponent, LoginComponent, RegisterComponent, ListComponent],
 	imports: [
 		BrowserModule,
 		RouterTestingModule,
