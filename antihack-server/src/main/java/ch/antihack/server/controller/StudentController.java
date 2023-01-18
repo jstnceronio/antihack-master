@@ -33,20 +33,17 @@ public class StudentController {
 
     record StudentList(String[] students) { }
 
-    // @CrossOrigin
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Student> getAllUsers() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        logger.info(user.getFirstname() + " is accessing all entries with the role " + user.getRole()) ;
+        logger.info(user.getFirstname() + " is accessing entries with the role " + user.getRole()) ;
 
         if (user.getRole().equals(Role.ADMIN)) {
             return studentRepository.findAll();
-        }
-
-        if (user.getRole().equals(Role.USER_ONE)) {
+        } else if (user.getRole().equals(Role.USER_ONE)) {
             return studentRepository.getEntitiesByRange(1, 7);
         }
-        // This returns a JSON or XML with the users
+        // this returns a JSON with the students
         return studentRepository.getEntitiesByRange(8, 16);
     }
 }

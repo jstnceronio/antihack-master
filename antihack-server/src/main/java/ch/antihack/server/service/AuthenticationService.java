@@ -48,6 +48,8 @@ public class AuthenticationService {
         }
 
         repository.save(user);
+        logger.info("User " + request.getEmail() + " was stored in database");
+
         var jwtToken = jwtService.generateToken(user);
         var jwtRefreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
