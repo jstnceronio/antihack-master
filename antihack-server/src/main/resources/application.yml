@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/students_db
+    url: jdbc:mysql://root:09vcyhCz4r0RLoPcKNTu@containers-us-west-203.railway.app:7615/railway
     username: ${env.MYSQL_USER}
     password: ${env.MYSQL_PW}
   jpa:
